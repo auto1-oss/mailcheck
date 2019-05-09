@@ -186,10 +186,8 @@ var Mailcheck = {
       switch (i) {
         case emailParts.secondLevelDomain:
           suggestionParts.secondLevelDomain = emailParts.secondLevelDomain;
-          break;
         case suggestionParts.secondLevelDomain:
           suggestionParts.topLevelDomain = fixedTopLevelDomains[i];
-          break;
         default:
           return false;
       }
