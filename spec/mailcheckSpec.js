@@ -109,8 +109,8 @@ describe("mailcheck", function() {
       });
     });
 
-    describe("cases", function () {
-      xit("pass", function () {
+    xdescribe("cases", function () {
+      it("pass", function () {
         expect(mailcheck.suggest('test@gmailc.om', domains).domain).toEqual('gmail.com');
         expect(mailcheck.suggest('test@emaildomain.co', domains).domain).toEqual('emaildomain.com');
         expect(mailcheck.suggest('test@gmail.con', domains).domain).toEqual('gmail.com');
@@ -138,18 +138,18 @@ describe("mailcheck", function() {
         expect(mailcheck.suggest('test@mail.randomsmallcompany.cmo', domains, secondLevelDomains, topLevelDomains).domain).toBeFalsy();
       });
 
-      xit("will not offer a suggestion that itself leads to another suggestion", function() {
+      it("will not offer a suggestion that itself leads to another suggestion", function() {
         var suggestion = mailcheck.suggest('test@yahooo.cmo', domains, secondLevelDomains, topLevelDomains);
         expect(suggestion.domain).toEqual('yahoo.com');
       });
 
-      xit("will not offer suggestions for valid 2ld-tld combinations", function() {
+      it("will not offer suggestions for valid 2ld-tld combinations", function() {
         expect(
             mailcheck.suggest('test@yahoo.co.uk', domains, secondLevelDomains, topLevelDomains)
         ).toBeFalsy();
       });
 
-      xit("will not offer suggestions for valid 2ld-tld even if theres a close fully-specified domain", function() {
+      it("will not offer suggestions for valid 2ld-tld even if theres a close fully-specified domain", function() {
         expect(
             mailcheck.suggest('test@gmx.fr', domains, secondLevelDomains, topLevelDomains)
         ).toBeFalsy();
