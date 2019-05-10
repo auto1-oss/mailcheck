@@ -192,8 +192,10 @@ var Mailcheck = {
           return false;
       }
     });
+
+    var emailFull = suggestionParts.address + "@" + suggestionParts.secondLevelDomain + '.' + suggestionParts.topLevelDomain;
     
-    if ((topLevelDomainMatches || secondLevelDomainsMatches) && !suggestion || (suggestionParts.topLevelDomain === emailParts.topLevelDomain)) {
+    if (emailFull === email && !suggestion) {
       /* The email address exactly matches one of the supplied domains, does not closely
        * match any domain and does not appear to simply have a mispelled top-level domain,
        * or is an invalid email address; do not return a suggestion.
@@ -204,9 +206,7 @@ var Mailcheck = {
         address: suggestionParts.address,
         domain: suggestionParts.secondLevelDomain + '.' +
           suggestionParts.topLevelDomain,
-        full: suggestionParts.address + "@" +
-          suggestionParts.secondLevelDomain + '.' +
-          suggestionParts.topLevelDomain
+        full: emailFull
       };
     }
   },
@@ -255,7 +255,7 @@ var Mailcheck = {
         if (index !== -1 &&
           (minIndex === -1 || minIndex > index)) {
           minIndex = index;
-          resultDomain = element[index];
+          resultDomain = element;
         }
       });
 
