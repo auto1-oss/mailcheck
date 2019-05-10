@@ -193,7 +193,7 @@ var Mailcheck = {
       }
     });
     
-    if ((topLevelDomainMatches || secondLevelDomainsMatches) && !suggestion || (suggestionParts.secondLevelDomain === emailParts.secondLevelDomain && suggestionParts.topLevelDomain === emailParts.topLevelDomain)) {
+    if ((topLevelDomainMatches || secondLevelDomainsMatches) && !suggestion || (suggestionParts.topLevelDomain === emailParts.topLevelDomain)) {
       /* The email address exactly matches one of the supplied domains, does not closely
        * match any domain and does not appear to simply have a mispelled top-level domain,
        * or is an invalid email address; do not return a suggestion.
