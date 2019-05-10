@@ -185,15 +185,15 @@ var Mailcheck = {
     Object.keys(fixedTopLevelDomains).forEach(function(i) {
       switch (i) {
         case emailParts.secondLevelDomain:
-          suggestionParts.secondLevelDomain = emailParts.secondLevelDomain;
+          suggestionParts.secondLevelDomain = emailParts.secondLevelDomain; // jshint ignore:line
         case suggestionParts.secondLevelDomain:
-          suggestionParts.topLevelDomain = fixedTopLevelDomains[i];
+          suggestionParts.topLevelDomain = fixedTopLevelDomains[i]; // jshint ignore:line
         default:
           return false;
       }
     });
     
-    if ((topLevelDomainMatches || secondLevelDomainsMatches) && !suggestion && (suggestionParts.secondLevelDomain === emailParts.secondLevelDomain && suggestionParts.topLevelDomain === emailParts.topLevelDomain)) {
+    if ((topLevelDomainMatches || secondLevelDomainsMatches) && !suggestion || (suggestionParts.secondLevelDomain === emailParts.secondLevelDomain && suggestionParts.topLevelDomain === emailParts.topLevelDomain)) {
       /* The email address exactly matches one of the supplied domains, does not closely
        * match any domain and does not appear to simply have a mispelled top-level domain,
        * or is an invalid email address; do not return a suggestion.
